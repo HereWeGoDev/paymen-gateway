@@ -1,0 +1,78 @@
+body {
+        position: absolute;
+        height: 3863px; 
+        overscroll-behavior: none; 
+        scroll-behavior: none;
+
+}
+
+::placeholder{
+    color: black;
+}
+
+.T1 {position: absolute;
+    left: 600px;
+    top: 300px;
+    width: 800px;
+    padding: 10px 20px 0px 30px;
+}
+ 
+.T2 {
+    display: inline-block;
+    margin: 0px 20px 20px 0px;
+    padding: 15px 0px 0px 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.329);
+}
+
+.T3 {
+    display: inline-block;
+    margin: 0px 20px 20px 0px;
+    padding: 15px 0px 0px 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.329);
+}
+
+.T4 {
+    margin: 0px 0px 20px 0px;
+    padding: 15px 0px 0px 0px;
+    width: 765px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.329);
+}
+
+.container {
+    position: absolute;
+    border: none;
+    align-content: center;
+    text-align: center;
+    margin: 0px 20px 20px 0px;
+    padding: 30px 0px 0px 300px;
+}
+
+input{
+    border: none;
+    padding: 0px 0px 15px 0px; 
+    margin: 0px 20px 0px 0px;
+    outline: none;
+    width: 350px;
+    font-size:small ;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+}
+
+input[type=file]{
+    display: none;
+}
+
+label{
+    color: rgb(0, 0, 0);
+    font-size:small ;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+}
+    /*background-color: blueviolet;*/
+    
+
+i{
+    /*background-color: brown;*/
+    position: relative;
+    top: 7px;
+}
