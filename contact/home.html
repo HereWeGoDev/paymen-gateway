@@ -26,11 +26,43 @@
         <div class="T4">
             <input type="text" name="deliveryAddress" placeholder="Delivery Address*"> 
         </div>
-        <div class="container">
+        <form id="container">
             <input type="file" id="file-input">
             <label for="file-input">
                 <i class="material-icons">cloud_upload</i>
-                Choose file
             </label>
+            <button>submit</button>
+        </form>    
     </div>
+    <script>
+        const form = document.getElementById('container')
+
+        const sendFiles = async () => {
+
+            const myFiles = document.getElementById('container').files 
+
+            const formData = new FormData()
+
+            Object.keys(myFiles).forEach(key =>{
+                formData.append(myFiles.item(key).name, myFiles.item(key))
+            })
+
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+
+            const json = await response.json()
+
+            console.log(json)
+
+
+        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault()
+            sendFiles()
+        })
+    </script>
+    
 </body>
