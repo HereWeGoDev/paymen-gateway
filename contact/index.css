@@ -76,3 +76,11 @@ i{
     position: relative;
     top: 7px;
 }
+
+button{
+    border: none;
+    outline: none;
+    background-color: white;
+    font-family: 'Montserrat' sans-serif;
+    font-size: medium;
+}
