@@ -10,7 +10,7 @@ body {
     color: black;
 }
 
-.T1 {position: absolute;
+.T1 {position: relative;
     left: 600px;
     top: 300px;
     width: 800px;
@@ -39,7 +39,7 @@ body {
 }
 
 #container {
-    position: absolute;
+    position: relative;
     border: none;
     align-content: center;
     text-align: center;
