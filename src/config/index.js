@@ -8,4 +8,6 @@ if (!envFile || envFile.error) {
 
 module.exports = {
   port: process.env.PORT,
+  databaseURL: process.env.DB_URL,
+  whitelistedDomains: process.env.WHITELISTED_DOMAINS,
 };

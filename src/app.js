@@ -1,18 +1,38 @@
-require("dotenv").config();
-const { constants } = require("buffer");
-const exp = require("constants");
-const express = require("express");
 const fileUpload = require("express-fileupload");
-const { request } = require("http");
-const morgan = require("morgan");
 const path = require("path");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const express = require("express");
+const cors = require("cors");
+const morgan = require("morgan");
+const helmet = require("helmet");
+const passport = require("passport");
+const cookieParser = require("cookie-parser");
+import config from "./config";
+const connectDB = require("./config/db");
+// const routes = require("./routes");
 
 const app = express();
 
-const port = process.env.PORT || 3000;
+const whitelist = config.whitelistedDomains
+  ? config.whitelistedDomains.split(",")
+  : [];
 
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
+
+connectDB();
+
+app.use(cors(corsOptions));
+app.use(helmet());
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(bodyParser.json);
@@ -22,24 +42,9 @@ app.use(
   })
 );
 
-mongoose.set("strictQuery", false);
-
-mongoose.connect(
-  "mongodb+srv://paymentUserId:newElement@initial.8c9l44z.mongodb.net/test",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
-
-const db = mongoose.connection;
-
-db.on("error", () => console.log("Error in Connecting to Database"));
-db.once("open", () => console.log("Connected to Database"));
-
 app.get("/", (req, res) => {
   try {
-    return res.redirect("home.html");
+    return res.sendFile(path.join(__dirname, "files/home.html"));
   } catch (error) {
     console.error("errrrrr", error);
     return error;
@@ -47,7 +52,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/contact/index.css", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.css"));
+  res.sendFile(path.join(__dirname, "files/index.css"));
 });
 
 app.post("/upload", fileUpload({ createParentPath: true }), (req, res) => {
