@@ -1,12 +1,11 @@
-import { databaseURL } from "./index";
+const config = require("./index");
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(`${databaseURL}`, {
+    mongoose.set("strictQuery", true);
+    const conn = await mongoose.connect(`${config.databaseURL}`, {
       useNewUrlParser: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
       useUnifiedTopology: true,
     });
 
