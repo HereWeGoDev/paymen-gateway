@@ -1,11 +1,11 @@
 const router = require("express").Router();
 
-router.post("/upload", (req, res) => {
+router.post("/files", (req, res) => {
   const files = req.files;
   console.log(files);
 
   Object.keys(files).forEach((key) => {
-    const filepath = path.join(__dirname, "document_upload", files[key].name);
+    const filepath = `.src/uploads/${files[key].name}`;
     files[key].mv(filepath, (err) => {
       if (err) {
         console.log(err);

@@ -1,6 +1,5 @@
 const fileUpload = require("express-fileupload");
 const path = require("path");
-const bodyParser = require("body-parser");
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
@@ -33,17 +32,10 @@ app.use(cors(corsOptions));
 app.use(helmet());
 app.use(express.json());
 app.use(morgan("dev"));
-app.use(bodyParser.json);
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
 
 app.get("/", (req, res) => {
   try {
-    return res.json({ message: "Hello World" });
-    // return res.sendFile(path.join(__dirname, "files/home.html"));
+    return res.sendFile(path.join(__dirname, "files/home.html"));
   } catch (error) {
     console.error("errrrrr", error);
     return error;

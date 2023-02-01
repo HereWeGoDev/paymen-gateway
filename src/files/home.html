@@ -60,7 +60,7 @@
           formData.append(myFiles.item(key).name, myFiles.item(key));
         });
 
-        const response = await fetch("/upload", {
+        const response = await fetch("/upload/files", {
           method: "POST",
           body: formData,
         });
