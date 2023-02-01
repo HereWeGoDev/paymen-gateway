@@ -1,7 +1,8 @@
 const router = require("express").Router();
+const path = require("path");
 
 router.get("/index.css", (req, res) => {
-  res.sendFile(".src/files/index.css");
+  res.sendFile(path.join(__dirname, "../files/index.css"));
 });
 
 module.exports = router;

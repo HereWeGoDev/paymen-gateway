@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const db = require("mongoose").connection;
 
 router.get("/", (req, res) => {
   res.json({ message: "Hello World" });
